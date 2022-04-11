@@ -1,0 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  overflow: hidden;
+}
+
+.webgl {
+  display: fixed;
+  top: 0;
+  left: 0;
+}
