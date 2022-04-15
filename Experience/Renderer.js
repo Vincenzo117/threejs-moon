@@ -1,0 +1,32 @@
+import * as THREE from 'three'
+import Experience from './Experience.js'
+
+export default class renderer
+{
+    constructor()
+    {
+        this.experience = new Experience()
+        this.canvas = this.experience.canvas
+        this.sizes = this.experience.sizes
+        this.scene = this.experience.scene
+        this.camera = this.experience.camera
+
+        this.setInstance()
+    }
+
+    setInstance()
+    {
+        this.instance = new THREE.WebGL1Renderer({
+            canvas: this.canvas,
+            antialias: true
+        })
+        this.instance.setSize(this.sizes.width, this.sizes.height)
+        this.instance.setPixelRatio(this.sizes.pixelRatio)
+    }
+
+    resize()
+    {
+        this.instance.setSize(this.sizes.width, this.sizes.height)
+        this.instance.setPixelRatio(this.sizes.pixelRatio)
+    }
+}
