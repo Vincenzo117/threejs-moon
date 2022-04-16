@@ -6,9 +6,6 @@ export default class Time extends EventEmitter
     {
         super()
 
-        /**
-         * Setup
-         */
         // Timestamp when the experience starts that will remain the same
         this.start = Date.now()
         // Current timestamp that will change on each frame
