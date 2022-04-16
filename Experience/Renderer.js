@@ -29,4 +29,9 @@ export default class renderer
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
     }
+
+    update()
+    {
+        this.instance.render(this.scene, this.camera.instance)
+    }
 }
