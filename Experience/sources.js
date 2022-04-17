@@ -14,5 +14,13 @@ export default [
         [
             '../assets/textures/ldem_16_uint.png'
         ]
+    },
+    {
+        name: 'phaseText',
+        type: 'font',
+        path:
+        [
+            '../assets/fonts/helvetiker_regular.typeface.json'
+        ]
     }
 ]

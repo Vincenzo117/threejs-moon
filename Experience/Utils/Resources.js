@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
 import EventEmitter from './EventEmitter.js'
 
 export default class Resources extends EventEmitter
@@ -23,7 +24,7 @@ export default class Resources extends EventEmitter
     {
         this.loaders = {}
         this.loaders.textureLoader = new THREE.TextureLoader()
-        // add here other loaders
+        this.loaders.fontLoader = new FontLoader()
     }
 
     startLoading()
@@ -35,6 +36,17 @@ export default class Resources extends EventEmitter
             if(source.type === 'texture')
             {
                 this.loaders.textureLoader.load(
+                    source.path,
+                    (file) =>
+                    {
+                        this.sourceLoaded(source, file)
+                    }
+                )
+            }
+
+            if(source.type === 'font')
+            {
+                this.loaders.fontLoader.load(
                     source.path,
                     (file) =>
                     {
