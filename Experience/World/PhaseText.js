@@ -1,6 +1,7 @@
 import * as THREE from 'three'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import Experience from '../Experience.js'
+import MoonData from '../../Data/MoonData.js'
 
 export default class PhaseText
 {
@@ -12,6 +13,7 @@ export default class PhaseText
         this.camera = this.experience.camera
         this.sizes = this.experience.sizes
         this.debug = this.experience.debug
+        this.moonData = new MoonData()
 
         // Debug
         if(this.debug.active)
@@ -27,10 +29,10 @@ export default class PhaseText
     setGeometry()
     {
         this.geometry = new TextGeometry(
-            'hello world ;)',
+            this.moonData.phaseName,
             {
                 font: this.resources.items.phaseText,
-                size: 0.5,
+                size: 0.8,
                 height: 0.2,
                 curveSegments: 6,
                 bevelEnabled: true,
@@ -45,9 +47,9 @@ export default class PhaseText
 
     setMaterial()
     {
-        this.material = new THREE.MeshStandardMaterial(
+        this.material = new THREE.MeshMatcapMaterial(
             {
-                color: '#dddddd'
+                matcap: this.resources.items.textMatcap
             }
         )
         
@@ -63,7 +65,8 @@ export default class PhaseText
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.set(0, -2, 0)
+        this.mesh.position.y = - 2.5
+        this.mesh.position.z = - 1
         this.scene.add(this.mesh)
     }
 

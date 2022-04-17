@@ -26,6 +26,6 @@ export default class World
         if(this.phaseText)
         {
             this.phaseText.update()
-        }
+        }   
     }
 }

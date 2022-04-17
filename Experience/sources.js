@@ -20,7 +20,15 @@ export default [
         type: 'font',
         path:
         [
-            '../assets/fonts/helvetiker_regular.typeface.json'
+            '../assets/fonts/optimer_regular.typeface.json'
         ]
-    }
+    },
+    {
+        name: 'textMatcap',
+        type: 'texture',
+        path:
+        [
+            '../assets/matcaps/matcap-2.png'
+        ]
+    },
 ]
