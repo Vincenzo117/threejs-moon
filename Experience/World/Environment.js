@@ -9,6 +9,7 @@ export default class Environment
         this.debug = this.experience.debug
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+        this.moonData = this.experience.moonData
 
         // Debug
         if(this.debug.active)
@@ -17,6 +18,7 @@ export default class Environment
         }
 
         this.setSunLight()
+        this.setSunLightPosition()
         this.setEnvironmentMap()
     }
 
@@ -27,7 +29,6 @@ export default class Environment
         this.sunLight.shadow.camera.fat = 15
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0.05
-        this.sunLight.position.set(0, 0, 100)
         this.scene.add(this.sunLight)
 
         // Debug
@@ -38,12 +39,25 @@ export default class Environment
                 .min(0)
                 .max(5)
                 .step(0.01)
-                .name('light intensity')
-        }
+                .name('light intensity');
+        }   
+    }
+
+    setSunLightPosition()
+    {
+        this.sunLight.position.x = Math.cos(this.moonData.rotationDegrees) * 100
+        this.sunLight.position.z = Math.sin(this.moonData.rotationDegrees) * 100
     }
 
     setEnvironmentMap()
     {
         // EnvironmentMap setup
     }
+
+    updateData()
+    {
+        this.sunLight.position.x = Math.cos(this.moonData.rotationDegrees) * 100
+        this.sunLight.position.z = Math.sin(this.moonData.rotationDegrees) * 100
+    }
+
 }

@@ -28,4 +28,10 @@ export default class World
             this.phaseText.update()
         }   
     }
+
+    updateData()
+    {
+        this.phaseText.updateData()
+        this.environment.updateData()
+    }
 }
