@@ -4,7 +4,7 @@ export default [
         type: 'texture',
         path: 
         [
-            '../assets/textures/lroc_color_poles_4k.png'
+            '/assets/textures/lroc_color_poles_4k.png'
         ]
     },
     {
@@ -12,7 +12,7 @@ export default [
         type: 'texture',
         path:
         [
-            '../assets/textures/ldem_16_uint.png'
+            '/assets/textures/ldem_16_uint.png'
         ]
     },
     {
@@ -20,7 +20,7 @@ export default [
         type: 'font',
         path:
         [
-            '../assets/fonts/optimer_regular.typeface.json'
+            '/assets/fonts/optimer_regular.typeface.json'
         ]
     },
     {
@@ -28,7 +28,7 @@ export default [
         type: 'texture',
         path:
         [
-            '../assets/matcaps/matcap-2.png'
+            '/assets/matcaps/matcap-2.png'
         ]
     },
 ]
