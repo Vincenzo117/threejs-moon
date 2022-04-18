@@ -28,7 +28,7 @@ export default [
         type: 'texture',
         path:
         [
-            '/assets/matcaps/matcap-2.png'
+            '/assets/matcaps/matcap-1.png'
         ]
     },
 ]

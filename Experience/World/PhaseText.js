@@ -44,14 +44,13 @@ export default class PhaseText
         this.material = new THREE.MeshMatcapMaterial(
             {
                 matcap: this.resources.items.textMatcap
-            }
-        )
+            })
     }
 
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.y = - 3.5
+        this.mesh.position.y = - 2.5
         this.mesh.position.z = - 1
         this.scene.add(this.mesh)
     }
