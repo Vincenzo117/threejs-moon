@@ -55,7 +55,7 @@ export default class PhaseText
         
 
         // Debug
-        if(this.debugFolder.active)
+        if(this.debug.active)
         {
             this.debugFolder
                 .addColor(this.material, 'color')

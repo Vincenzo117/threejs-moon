@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
   },
   "devDependencies": {
     "vite": "^2.9.0"
@@ -14,6 +15,7 @@
     "dayjs": "^1.11.1",
     "gsap": "^3.10.3",
     "lil-gui": "^0.16.1",
-    "three": "^0.139.2"
+    "three": "^0.139.2",
+    "vercel": "^24.1.0"
   }
 }
