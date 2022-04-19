@@ -1,19 +1,17 @@
 import * as THREE from 'three'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
-import Experience from '../Experience.js'
+import Experience from '../Experience'
 
-export default class PhaseText
+export default class DateText
 {
     constructor()
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
-        this.resources = this.experience.resources
-        this.camera = this.experience.camera
         this.sizes = this.experience.sizes
-        this.debug = this.experience.debug
+        this.camera = this.experience.camera
+        this.resources = this.experience.resources
         this.moonData = this.experience.moonData
-        this.text = this.moonData.phaseName
 
         this.setGeometry()
         this.setMaterial()
@@ -23,10 +21,10 @@ export default class PhaseText
     setGeometry()
     {
         this.geometry = new TextGeometry(
-            this.moonData.phaseName,
+            this.moonData.fullDate,
             {
                 font: this.resources.items.phaseText,
-                size: 0.8,
+                size: 0.5,
                 height: 0.2,
                 curveSegments: 6,
                 bevelEnabled: true,
@@ -50,7 +48,7 @@ export default class PhaseText
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.y = - 2.2
+        this.mesh.position.y = - 3.5
         this.mesh.position.z = - 1
         this.scene.add(this.mesh)
     }
@@ -67,17 +65,5 @@ export default class PhaseText
 
             this.mesh.lookAt(this.target)
         })
-    }
-
-    updateData()
-    {
-        if(this.text != this.moonData.phaseName)
-        {
-            this.scene.remove(this.mesh)
-            this.setGeometry()
-            this.setMaterial()
-            this.setMesh()
-            this.text = this.moonData.phaseName
-        }
     }
 }

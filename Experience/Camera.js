@@ -12,7 +12,7 @@ export default class Camera
         this.canvas = this.experience.canvas
 
         this.setInstance()
-        // this.setOrbitControls()
+        this.setOrbitControls()
     }
 
     setInstance()
@@ -31,6 +31,7 @@ export default class Camera
     {
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
+        this.controls.enabled = false
     }
 
     resize()
