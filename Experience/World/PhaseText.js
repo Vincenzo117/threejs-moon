@@ -19,7 +19,6 @@ export default class PhaseText
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
-        this.setListener()
     }
 
     setGeometry()
@@ -52,23 +51,9 @@ export default class PhaseText
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.y = - 2.2
-        this.mesh.position.z = - 1
+        this.mesh.position.y = 3.2
+        this.mesh.rotation.x = Math.PI * 0.15
         this.scene.add(this.mesh)
-    }
-
-    setListener()
-    {
-        window.addEventListener('mousemove', (event) =>
-        {
-            this.target = new THREE.Vector3()
-
-            this.target.x += ( event.clientX - (this.sizes.width / 2) - this.target.x) * 0.0008
-            this.target.y = this.mesh.position.y
-            this.target.z = this.camera.instance.position.z
-
-            this.mesh.lookAt(this.target)
-        })
     }
 
     updateData()

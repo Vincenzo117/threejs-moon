@@ -53,28 +53,18 @@ export default class NextDayButton extends EventEmitter
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.set(3, - 3.5, - 1)
+        this.mesh.position.set(2.8, - 3.42, 0)
+        this.mesh.rotation.x = - Math.PI * 0.15
         this.scene.add(this.mesh)
     }
 
     setListener()
     {
-        window.addEventListener('mousemove', (event) =>
-        {
-            this.target = new THREE.Vector3()
-
-            this.target.x += (event.clientX - (this.sizes.width / 2) - this.target.x) * 0.001
-            this.target.y = this.mesh.position.y
-            this.target.z = this.camera.instance.position.z
-            
-            this.mesh.lookAt(this.target)
-        })       
-
         window.addEventListener('keyup', (event) =>
         {
             if(event.key == 'ArrowRight')
             {
-                gsap.fromTo(this.mesh.rotation, {x: 0}, { duration: 1.4,  x: Math.PI * 2, ease: 'elastic' })
+                gsap.fromTo(this.mesh.rotation, {x: - Math.PI * 0.15}, { duration: 1.4,  x: Math.PI * 2 - Math.PI * 0.15, ease: 'elastic' })
                 this.trigger('nextDay')
             }
         })

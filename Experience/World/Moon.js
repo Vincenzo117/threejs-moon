@@ -60,7 +60,7 @@ export default class Moon
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.y = 1
+        this.mesh.position.y = 0
         this.mesh.rotation.y = 4.5
         this.scene.add(this.mesh)
     }

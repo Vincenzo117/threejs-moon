@@ -73,8 +73,6 @@ export default class MoonData extends EventEmitter
         let cycles = daysSinceNew / 29.53058770576
 
         this.daysIntoCycle = (cycles % 1) * 29.53058770576
-
-        console.log(this.daysIntoCycle);
     }
 
     getPhaseName() {
