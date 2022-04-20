@@ -60,7 +60,7 @@ export default class PrevDayButton extends EventEmitter
 
     setListener()
     {
-        window.addEventListener('keyup', (event) =>
+        window.addEventListener('keydown', (event) =>
         {
             if(event.key == 'ArrowLeft')
             {
