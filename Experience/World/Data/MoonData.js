@@ -1,6 +1,6 @@
 import dayjs from 'dayjs'
-import Experience from '../Experience.js'
-import EventEmitter from '../Utils/EventEmitter.js'
+import Experience from '../../Experience.js'
+import EventEmitter from '../../Utils/EventEmitter.js'
 
 export default class MoonData extends EventEmitter
 {
@@ -27,20 +27,20 @@ export default class MoonData extends EventEmitter
 
             this.debugFolder
                 .add(this.currentDate, 'day')
-                .min(0)
+                .min(1)
                 .max(31)
                 .step(1)
 
             this.debugFolder
                 .add(this.currentDate, 'month')
-                .min(0)
+                .min(1)
                 .max(12)
                 .step(1)
 
             this.debugFolder
                 .add(this.currentDate, 'year')
-                .min(0)
-                .max(3000)
+                .min(2000)
+                .max(2050)
                 .step(1)
         }
 
@@ -49,7 +49,7 @@ export default class MoonData extends EventEmitter
         {
             this.debug.ui.onChange( event => 
                 {
-                    if (event.property == 'day')
+                    if (event.property == 'day' || event.property == 'month' || event.property == 'year')
                     {
                         this.updateData()
                         this.trigger('newDate')
@@ -73,6 +73,8 @@ export default class MoonData extends EventEmitter
         let cycles = daysSinceNew / 29.53058770576
 
         this.daysIntoCycle = (cycles % 1) * 29.53058770576
+
+        console.log(this.daysIntoCycle);
     }
 
     getPhaseName() {
@@ -122,5 +124,14 @@ export default class MoonData extends EventEmitter
     getFullDate()
     {
         this.fullDate = dayjs(this.currentDate.year + '-' + this.currentDate.month + '-' + this.currentDate.day).format('D MMM YYYY')
+    }
+
+    nextDay()
+    {
+        let newDate = dayjs(this.currentDate.year + '-' + this.currentDate.month + '-' + this.currentDate.day).add(1, 'day')
+        this.currentDate.day = newDate.date()
+        this.currentDate.month = newDate.month() + 1
+        this.currentDate.year = newDate.year()
+        console.log(this.currentDate);
     }
 }

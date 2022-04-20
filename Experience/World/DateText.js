@@ -11,11 +11,12 @@ export default class DateText
         this.sizes = this.experience.sizes
         this.camera = this.experience.camera
         this.resources = this.experience.resources
-        this.moonData = this.experience.moonData
+        this.moonData = this.experience.world.moonData
 
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
+        this.setListener()
     }
 
     setGeometry()
@@ -53,7 +54,7 @@ export default class DateText
         this.scene.add(this.mesh)
     }
 
-    update()
+    setListener()
     {
         window.addEventListener('mousemove', (event) =>
         {
@@ -65,5 +66,13 @@ export default class DateText
 
             this.mesh.lookAt(this.target)
         })
+    }
+
+    updateData()
+    {
+        this.scene.remove(this.mesh)
+        this.setGeometry()
+        this.setMaterial()
+        this.setMesh()
     }
 }

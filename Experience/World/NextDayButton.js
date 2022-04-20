@@ -12,11 +12,12 @@ export default class NextDayButton
         this.sizes = this.experience.sizes
         this.camera = this.experience.camera
         this.resources = this.experience.resources
-        this.moonData = this.experience.moonData
+        this.moonData = this.experience.world.moonData
 
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
+        this.setListener()
     }
 
     setGeometry()
@@ -53,7 +54,7 @@ export default class NextDayButton
         this.scene.add(this.mesh)
     }
 
-    update()
+    setListener()
     {
         window.addEventListener('mousemove', (event) =>
         {
@@ -65,10 +66,13 @@ export default class NextDayButton
             
             this.mesh.lookAt(this.target)
         })       
-    }
 
-    rotate()
-    {
-        gsap.to(this.mesh.rotation, { duration: 1,  x: Math.PI * 2 })
+        window.addEventListener('keyup', (event) =>
+        {
+            if(event.key == 'ArrowRight')
+            {
+                gsap.to(this.mesh.rotation, { duration: 1.4,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'elastic' })
+            }
+        })
     }
 }

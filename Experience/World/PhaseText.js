@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
+import gsap from 'gsap'
 import Experience from '../Experience.js'
 
 export default class PhaseText
@@ -12,12 +13,13 @@ export default class PhaseText
         this.camera = this.experience.camera
         this.sizes = this.experience.sizes
         this.debug = this.experience.debug
-        this.moonData = this.experience.moonData
-        this.text = this.moonData.phaseName
+        this.moonData = this.experience.world.moonData
+        this.prevPhase = this.moonData.phaseName
 
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
+        this.setListener()
     }
 
     setGeometry()
@@ -55,7 +57,7 @@ export default class PhaseText
         this.scene.add(this.mesh)
     }
 
-    update()
+    setListener()
     {
         window.addEventListener('mousemove', (event) =>
         {
@@ -71,13 +73,14 @@ export default class PhaseText
 
     updateData()
     {
-        if(this.text != this.moonData.phaseName)
+        if(this.prevPhase != this.moonData.phaseName)
         {
             this.scene.remove(this.mesh)
             this.setGeometry()
             this.setMaterial()
             this.setMesh()
-            this.text = this.moonData.phaseName
+            gsap.to(this.mesh.rotation, { duration: 1.4,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'bounce' })
+            this.prevPhase = this.moonData.phaseName
         }
     }
 }

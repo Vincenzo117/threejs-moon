@@ -1,4 +1,5 @@
 import Experience from '../Experience.js'
+import MoonData from './Data/MoonData.js'
 import DateText from './DateText.js'
 import Environment from './Environment.js'
 import Moon from './Moon.js'
@@ -13,6 +14,7 @@ export default class World
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.resources = this.experience.resources
+        this.moonData = new MoonData()
 
         // Wait for resources loading
         this.resources.on('ready', () =>
@@ -23,34 +25,31 @@ export default class World
             this.nextDayButton = new NextDayButton()
             this.prevDayButton = new PrevDayButton()
             this.environment = new Environment()
-        })
 
-        
+            // New Date event
+            this.moonData.on('newDate', () =>
+            {
+                this.updateData()
+            })
+
+            // Previous Day event
+            this.prevDayButton.on('prevDay', () =>
+            {
+                this.nextDay()
+            })
+        })        
     }  
-
-    update()
-    {
-        if(this.phaseText)
-        {
-            this.phaseText.update()
-        }   
-        if(this.dateText)
-        {
-            this.dateText.update()
-        }
-        if(this.nextDayButton)
-        {
-            this.nextDayButton.update()
-        }
-        if(this.prevDayButton)
-        {
-            this.prevDayButton.update()
-        }
-    }
 
     updateData()
     {
         this.phaseText.updateData()
         this.environment.updateData()
+        this.dateText.updateData()
+    }
+
+    nextDay()
+    {
+        this.moonData.nextDay()
+        this.updateData()
     }
 }

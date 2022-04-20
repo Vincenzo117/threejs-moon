@@ -7,7 +7,6 @@ import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 import Debug from './Utils/Debug.js'
 import sources from './sources.js'
-import MoonData from './Data/MoonData.js'
 
 let instance = null
 
@@ -27,7 +26,6 @@ export default class Experience
 
         // Setup
         this.debug = new Debug()
-        this.moonData = new MoonData()
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
@@ -47,12 +45,6 @@ export default class Experience
         {
             this.update()
         })
-
-        // New Date event
-        this.moonData.on('newDate', () =>
-        {
-            this.updateData()
-        })
     }
 
     resize()
@@ -65,11 +57,5 @@ export default class Experience
     {
         this.camera.update()
         this.renderer.update()
-        this.world.update()
-    }
-
-    updateData()
-    {
-        this.world.updateData()
     }
 }

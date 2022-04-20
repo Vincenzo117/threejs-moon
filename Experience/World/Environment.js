@@ -9,7 +9,7 @@ export default class Environment
         this.debug = this.experience.debug
         this.scene = this.experience.scene
         this.resources = this.experience.resources
-        this.moonData = this.experience.moonData
+        this.moonData = this.experience.world.moonData
 
         // Debug
         if(this.debug.active)
