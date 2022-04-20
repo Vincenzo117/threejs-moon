@@ -1,4 +1,5 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
 import Experience from '../Experience'
 
 export default class Environment 
@@ -56,8 +57,8 @@ export default class Environment
 
     updateData()
     {
-        this.sunLight.position.x = Math.cos(this.moonData.rotationDegrees) * 100
-        this.sunLight.position.z = Math.sin(this.moonData.rotationDegrees) * 100
+        gsap.to(this.sunLight.position,{ duration: 1, x: Math.cos(this.moonData.rotationDegrees) * 100})
+        gsap.to(this.sunLight.position,{ duration: 1, z: Math.sin(this.moonData.rotationDegrees) * 100})
     }
 
 }
