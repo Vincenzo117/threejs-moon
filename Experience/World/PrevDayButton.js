@@ -76,9 +76,8 @@ export default class PrevDayButton extends EventEmitter
             if(event.key == 'ArrowLeft')
             {
                 gsap.to(this.mesh.rotation, { duration: 1.4,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'elastic' })
+                this.trigger('prevDay')
             }
-
-            this.trigger('prevDay')
         })
     }
 }

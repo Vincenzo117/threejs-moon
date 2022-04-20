@@ -47,7 +47,7 @@ export default class MoonData extends EventEmitter
         // New Date event
         if(this.debug.active)
         {
-            this.debug.ui.onChange( event => 
+            this.debug.ui.onChange( event =>
                 {
                     if (event.property == 'day' || event.property == 'month' || event.property == 'year')
                     {
@@ -132,6 +132,15 @@ export default class MoonData extends EventEmitter
         this.currentDate.day = newDate.date()
         this.currentDate.month = newDate.month() + 1
         this.currentDate.year = newDate.year()
-        console.log(this.currentDate);
+        this.updateData()
+    }
+
+    prevDay()
+    {
+        let newDate = dayjs(this.currentDate.year + '-' + this.currentDate.month + '-' + this.currentDate.day).subtract(1, 'day')
+        this.currentDate.day = newDate.date()
+        this.currentDate.month = newDate.month() + 1
+        this.currentDate.year = newDate.year()
+        this.updateData()
     }
 }

@@ -1,12 +1,15 @@
 import * as THREE from 'three'
 import { TextGeometry } from 'three/examples/jsm/geometries/TextGeometry.js'
 import gsap from 'gsap'
+import EventEmitter from '../Utils/EventEmitter'
 import Experience from '../Experience'
 
-export default class NextDayButton
+export default class NextDayButton extends EventEmitter
 {
     constructor()
     {
+        super()
+
         this.experience = new Experience()
         this.scene = this.experience.scene
         this.sizes = this.experience.sizes
@@ -72,6 +75,7 @@ export default class NextDayButton
             if(event.key == 'ArrowRight')
             {
                 gsap.to(this.mesh.rotation, { duration: 1.4,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'elastic' })
+                this.trigger('nextDay')
             }
         })
     }

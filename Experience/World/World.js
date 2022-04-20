@@ -35,6 +35,12 @@ export default class World
             // Previous Day event
             this.prevDayButton.on('prevDay', () =>
             {
+                this.prevDay()
+            })
+
+            // Next Day event
+            this.nextDayButton.on('nextDay', () =>
+            {
                 this.nextDay()
             })
         })        
@@ -50,6 +56,12 @@ export default class World
     nextDay()
     {
         this.moonData.nextDay()
+        this.updateData()
+    }
+
+    prevDay()
+    {
+        this.moonData.prevDay()
         this.updateData()
     }
 }
