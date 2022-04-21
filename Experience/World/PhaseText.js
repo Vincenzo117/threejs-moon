@@ -64,7 +64,7 @@ export default class PhaseText
             this.setGeometry()
             this.setMaterial()
             this.setMesh()
-            gsap.to(this.mesh.rotation, { duration: 1,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'power1' })
+            gsap.fromTo(this.mesh.rotation,{x: this.mesh.rotation.x + Math.PI }, { duration: 0.7,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'expo' })
             this.prevPhase = this.moonData.phaseName
         }
     }
