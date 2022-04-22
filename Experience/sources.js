@@ -2,33 +2,21 @@ export default [
     {
         name: 'moonColorTexture',
         type: 'texture',
-        path: 
-        [
-            '/assets/textures/lroc_color_poles_4k.png'
-        ]
+        path: '/assets/textures/moon/lroc_color_poles_4k.png'
     },
     {
         name: 'moonDispTexture',
         type: 'texture',
-        path:
-        [
-            '/assets/textures/ldem_16_uint.png'
-        ]
+        path: '/assets/textures/moon/ldem_16_uint.png'
     },
     {
-        name: 'phaseText',
+        name: 'text',
         type: 'font',
-        path:
-        [
-            '/assets/fonts/optimer_regular.typeface.json'
-        ]
+        path: '/assets/fonts/Play_regular.json'
     },
     {
         name: 'textMatcap',
         type: 'texture',
-        path:
-        [
-            '/assets/matcaps/matcap-1.png'
-        ]
-    },
+        path: '/assets/matcaps/matcap-1.png'
+    }
 ]

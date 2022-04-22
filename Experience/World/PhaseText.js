@@ -26,7 +26,7 @@ export default class PhaseText
         this.geometry = new TextGeometry(
             this.moonData.phaseName,
             {
-                font: this.resources.items.phaseText,
+                font: this.resources.items.text,
                 size: 0.8,
                 height: 0.2,
                 curveSegments: 6,
@@ -44,7 +44,7 @@ export default class PhaseText
     {
         this.material = new THREE.MeshMatcapMaterial(
             {
-                matcap: this.resources.items.textMatcap
+                matcap: this.resources.items.textMatcap,
             })
     }
 

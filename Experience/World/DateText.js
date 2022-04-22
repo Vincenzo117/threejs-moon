@@ -23,7 +23,7 @@ export default class DateText
         this.geometry = new TextGeometry(
             this.moonData.fullDate,
             {
-                font: this.resources.items.phaseText,
+                font: this.resources.items.text,
                 size: 0.5,
                 height: 0.2,
                 curveSegments: 6,

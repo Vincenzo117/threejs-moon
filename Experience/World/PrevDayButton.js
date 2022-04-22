@@ -28,7 +28,7 @@ export default class PrevDayButton extends EventEmitter
         this.geometry = new TextGeometry(
             '<<',
             {
-                font: this.resources.items.phaseText,
+                font: this.resources.items.text,
                 size: 0.5,
                 height: 0.2,
                 curveSegments: 6,
