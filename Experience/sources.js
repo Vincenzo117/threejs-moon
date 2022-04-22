@@ -12,7 +12,7 @@ export default [
     {
         name: 'text',
         type: 'font',
-        path: '/assets/fonts/Play_regular.json'
+        path: '/assets/fonts/play-regular.json'
     },
     {
         name: 'textMatcap',
