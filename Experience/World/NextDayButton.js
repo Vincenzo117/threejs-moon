@@ -20,6 +20,7 @@ export default class NextDayButton extends EventEmitter
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
+        this.setRaycaster()
         this.setListener()
     }
 
@@ -58,15 +59,37 @@ export default class NextDayButton extends EventEmitter
         this.scene.add(this.mesh)
     }
 
+    setRaycaster()
+    {
+        this.raycaster = new THREE.Raycaster()
+    }
+
     setListener()
     {
-        window.addEventListener('keydown', (event) =>
+        window.addEventListener('keyup', (event) =>
         {
             if(event.key == 'ArrowRight')
             {
-                gsap.fromTo(this.mesh.rotation, {x: - Math.PI * 0.15}, { duration: 1.8,  x: Math.PI - Math.PI * 0.15, ease: 'elastic' })
-                this.trigger('nextDay')
+                this.nextDay()
             }
         })
+
+        window.addEventListener('click', (event) =>
+        {
+            const pointer = new THREE.Vector2()
+            pointer.x = ( event.clientX / window.innerWidth ) * 2 - 1
+	        pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1
+            this.raycaster.setFromCamera(pointer, this.camera.instance)
+            if (this.raycaster.intersectObject(this.mesh).length > 0)
+            {
+                this.nextDay()
+            }
+        })
+    }
+
+    nextDay()
+    {
+        gsap.fromTo(this.mesh.rotation, {x: - Math.PI * 0.15}, { duration: 1.8,  x: Math.PI - Math.PI * 0.15, ease: 'elastic' })
+        this.trigger('nextDay')
     }
 }
