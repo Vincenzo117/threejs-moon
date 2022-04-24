@@ -22,6 +22,7 @@ export default class PrevDayButton extends EventEmitter
         this.setMesh()
         this.setRaycaster()
         this.setListener()
+        this.resize()
     }
 
     setGeometry()
@@ -39,7 +40,6 @@ export default class PrevDayButton extends EventEmitter
                 bevelSegments: 3,
             }
         )
-            
         this.geometry.center()
     }
 
@@ -54,7 +54,7 @@ export default class PrevDayButton extends EventEmitter
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.set(- 2.8, - 3.42, 0)
+        this.mesh.position.set(- 2.8, - 3.1, 0)
         this.mesh.rotation.x = - Math.PI * 0.15
         this.scene.add(this.mesh)
     }
@@ -66,7 +66,7 @@ export default class PrevDayButton extends EventEmitter
 
     setListener()
     {
-        window.addEventListener('keydown', (event) =>
+        window.addEventListener('keyup', (event) =>
         {
             if(event.key == 'ArrowLeft')
             {
@@ -91,5 +91,34 @@ export default class PrevDayButton extends EventEmitter
     {
         gsap.fromTo(this.mesh.rotation, {x: - Math.PI * 0.15}, { duration: 1.8,  x: Math.PI  - Math.PI * 0.15, ease: 'elastic' })
         this.trigger('prevDay')
+    }
+
+    resize()
+    {   
+        if(this.sizes.width < 420)
+        {
+            this.mesh.scale.set(0.35, 0.35, 0.35)
+            this.mesh.position.x = - 1
+        }
+        else if(this.sizes.width < 560)
+        {
+            this.mesh.scale.set(0.45, 0.45, 0.45)
+            this.mesh.position.x = - 1.3
+        }
+        else if(this.sizes.width < 720)
+        {
+            this.mesh.scale.set(0.6, 0.6, 0.6)
+            this.mesh.position.x = - 1.8
+        }
+        else if(this.sizes.width < 880)
+        {
+            this.mesh.scale.set(0.8, 0.8, 0.8)
+            this.mesh.position.x = - 2.2
+        } 
+        else 
+        {
+            this.mesh.scale.set(1, 1, 1)
+            this.mesh.position.x = - 2.8
+        }
     }
 }

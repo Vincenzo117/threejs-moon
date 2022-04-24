@@ -55,6 +55,15 @@ export default class World
         this.dateText.updateData()
     }
 
+    resize()
+    {
+        this.phaseText.resize()
+        this.dateText.resize()
+        this.moon.resize()
+        this.prevDayButton.resize()
+        this.nextDayButton.resize()
+    }
+
     nextDay()
     {
         this.moonData.nextDay()

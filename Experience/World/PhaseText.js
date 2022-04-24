@@ -19,6 +19,7 @@ export default class PhaseText
         this.setGeometry()
         this.setMaterial()
         this.setMesh()
+        this.resize()
     }
 
     setGeometry()
@@ -64,8 +65,33 @@ export default class PhaseText
             this.setGeometry()
             this.setMaterial()
             this.setMesh()
+            this.resize()
             gsap.fromTo(this.mesh.rotation,{x: this.mesh.rotation.x + Math.PI }, { duration: 0.7,  x: this.mesh.rotation.x + Math.PI * 2, ease: 'expo' })
             this.prevPhase = this.moonData.phaseName
+        }
+    }
+
+    resize()
+    {   
+        if(this.sizes.width < 420)
+        {
+            this.mesh.scale.set(0.35, 0.35, 0.35)
+        }
+        else if(this.sizes.width < 560)
+        {
+            this.mesh.scale.set(0.45, 0.45, 0.45)
+        }
+        else if(this.sizes.width < 720)
+        {
+            this.mesh.scale.set(0.6, 0.6, 0.6)
+        }
+        else if(this.sizes.width < 880)
+        {
+            this.mesh.scale.set(0.8, 0.8, 0.8)
+        } 
+        else 
+        {
+            this.mesh.scale.set(1, 1, 1)
         }
     }
 }

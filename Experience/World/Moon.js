@@ -7,6 +7,7 @@ export default class Moon
     {
         this.experience = new Experience()
         this.scene = this.experience.scene
+        this.sizes = this.experience.sizes
         this.resources = this.experience.resources
         this.debug = this.experience.debug
 
@@ -20,6 +21,7 @@ export default class Moon
         this.setTextures()
         this.setMaterial()
         this.setMesh()
+        this.resize()
     }
 
     setGeometry()
@@ -65,5 +67,21 @@ export default class Moon
         this.mesh.castShadow = true
         this.mesh.receiveShadow = true
         this.scene.add(this.mesh)
+    }
+
+    resize()
+    {   
+        if(this.sizes.width < 400)
+        {
+            this.mesh.scale.set(0.6, 0.6, 0.6)
+        }
+        else if(this.sizes.width < 600)
+        {
+            this.mesh.scale.set(0.75, 0.75, 0.75)
+        } 
+        else 
+        {
+            this.mesh.scale.set(1, 1, 1)
+        }
     }
 }
