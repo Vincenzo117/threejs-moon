@@ -14,3 +14,9 @@ html {
   left: 0;
   outline: none;
 }
+
+h1 {
+  color: white;
+  position: fixed;
+  top: 0;
+}
