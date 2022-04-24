@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { DeviceOrientationControls } from './DeviceOrientationControls.js'
 import Experience from './Experience.js'
 
 export default class Camera 
@@ -14,6 +15,8 @@ export default class Camera
 
         this.setInstance()
         this.setOrbitControls()
+        this.setDeviceOrientationControls()
+        this.setListener()
     }
 
     setInstance()
@@ -33,7 +36,31 @@ export default class Camera
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
         this.controls.enabled = this.debug.active
-    
+    }
+
+    setDeviceOrientationControls()
+    {
+        this.orientationControls = new DeviceOrientationControls(this.instance)
+        this.controls.enableDamping = true
+    }
+
+    setListener()
+    {
+        window.addEventListener('mousemove', (event) =>
+        {
+            const cursor = 
+            {
+                x: event.clientX / this.sizes.width - 0.5,
+                y: - (event.clientX / this.sizes.height - 0.5),
+            }
+            this.instance.position.x = cursor.x * 2
+            this.instance.lookAt(new THREE.Vector3(0, 0, 0))
+        })
+
+        window.addEventListener('deviceorientation', (event) =>
+        {
+            console.log(event.alpha);
+        })
     }
 
     resize()
@@ -45,5 +72,6 @@ export default class Camera
     update()
     {
         this.controls.update()
+        this.orientationControls.update()
     }
 } 

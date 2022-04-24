@@ -106,7 +106,7 @@ export default class NextDayButton extends EventEmitter
 
     nextDay()
     {
-        gsap.fromTo(this.mesh.rotation, {x: - Math.PI * 0.15}, { duration: 1.8,  x: Math.PI - Math.PI * 0.15, ease: 'elastic' })
+        gsap.fromTo(this.mesh.rotation, {x: - Math.PI * 0.15}, { duration: 1.8,  x: Math.PI - Math.PI * 0.15, ease: 'elastic'})
         this.trigger('nextDay')
     }
 
