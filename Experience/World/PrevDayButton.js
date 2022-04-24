@@ -66,6 +66,7 @@ export default class PrevDayButton extends EventEmitter
 
     setListener()
     {
+        // Arrow keys
         window.addEventListener('keyup', (event) =>
         {
             if(event.key == 'ArrowLeft')
@@ -74,6 +75,7 @@ export default class PrevDayButton extends EventEmitter
             }
         })
 
+        // Click on arrows
         window.addEventListener('click', (event) =>
         {
             const pointer = new THREE.Vector2()
@@ -81,6 +83,22 @@ export default class PrevDayButton extends EventEmitter
 	        pointer.y = - ( event.clientY / window.innerHeight ) * 2 + 1
             this.raycaster.setFromCamera(pointer, this.camera.instance)
             if (this.raycaster.intersectObject(this.mesh).length > 0)
+            {
+                this.prevDay()
+            }
+        })
+
+        // Mobile swipe
+        let touchStartX = 0
+        let touchEndX = 0
+        window.addEventListener('touchstart', (event) => 
+        {
+            touchStartX = event.changedTouches[0].screenX
+        })
+        window.addEventListener('touchend', (event) => 
+        {
+            touchEndX = event.changedTouches[0].screenX
+            if(touchEndX < touchStartX)
             {
                 this.prevDay()
             }

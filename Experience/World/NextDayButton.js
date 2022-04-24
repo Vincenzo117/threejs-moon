@@ -86,6 +86,22 @@ export default class NextDayButton extends EventEmitter
                 this.nextDay()
             }
         })
+
+        // Mobile swipe
+        let touchStartX = 0
+        let touchEndX = 0
+        window.addEventListener('touchstart', (event) => 
+        {
+            touchStartX = event.changedTouches[0].screenX
+        })
+        window.addEventListener('touchend', (event) => 
+        {
+            touchEndX = event.changedTouches[0].screenX
+            if(touchEndX > touchStartX)
+            {
+                this.nextDay()
+            }
+        })
     }
 
     nextDay()
