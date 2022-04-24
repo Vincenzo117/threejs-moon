@@ -1,5 +1,6 @@
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
+import { DeviceOrientationControls } from './Utils/DeviceOrientationControl.js'
 import Experience from './Experience.js'
 
 export default class Camera 
@@ -12,8 +13,14 @@ export default class Camera
         this.canvas = this.experience.canvas
         this.debug = this.experience.debug
 
+        if(this.debug.active)
+        {
+            this.debugFolder = this.debug.ui.addFolder('Camera controls')
+        }
+
         this.setInstance()
         this.setOrbitControls()
+        this.setOrientationControls()
         this.setListener()
     }
 
@@ -31,26 +38,43 @@ export default class Camera
 
     setOrbitControls()
     {
-        this.controls = new OrbitControls(this.instance, this.canvas)
-        this.controls.enableDamping = true
-        this.controls.enabled = this.debug.active
+        this.orbitControls = new OrbitControls(this.instance, this.canvas)
+        this.orbitControls.enableDamping = true
+        this.orbitControls.enabled = false
+
+        if(this.debugFolder)
+        {
+            this.debugFolder
+                .add(this.orbitControls, 'enabled')
+                .name('orbit controls')
+        }
+    }
+
+    setOrientationControls()
+    {
+        this.orientationControls = new DeviceOrientationControls(this.instance)
+        this.orientationControls.enableDamping = true
+        this.orientationControls.enabled = false
+
+        if(this.debugFolder)
+        {
+            this.debugFolder
+                .add(this.orientationControls, 'enabled')
+                .name('orientation controls')
+        }
     }
 
     setListener()
     {
-        window.addEventListener('mousemove', (event) =>
+        if(this.sizes.width > 500)
         {
-            const x = event.clientX / this.sizes.width - 0.5
-            this.instance.position.x = x * 2
-            this.instance.lookAt(new THREE.Vector3(0, 0, 0))
-        })
-
-        window.addEventListener('deviceorientation', (event) =>
-        {
-            let x = ((event.beta + 180) / 360) - 0.5
-            document.getElementById('stat').innerHTML = event
-            this.instance.position.x = x * 2
-        })
+            window.addEventListener('mousemove', (event) =>
+            {
+                const x = event.clientX / this.sizes.width - 0.5
+                this.instance.position.x = x 
+                this.instance.lookAt(new THREE.Vector3(0, 0, 0))
+            })
+        }
     }
 
     resize()
@@ -61,6 +85,7 @@ export default class Camera
 
     update()
     {
-        this.controls.update()
+        this.orbitControls.update()
+        this.orientationControls.update()
     }
 } 
