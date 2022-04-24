@@ -62,6 +62,8 @@ export default class Moon
         this.mesh = new THREE.Mesh(this.geometry, this.material)
         this.mesh.position.y = 0
         this.mesh.rotation.y = 4.5
+        this.mesh.castShadow = true
+        this.mesh.receiveShadow = true
         this.scene.add(this.mesh)
     }
 }

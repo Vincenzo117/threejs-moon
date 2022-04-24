@@ -6,6 +6,7 @@ import Moon from './Moon.js'
 import NextDayButton from './NextDayButton.js'
 import PhaseText from './PhaseText.js'
 import PrevDayButton from './PrevDayButton.js'
+import Stars from './Stars.js'
 
 export default class World
 {
@@ -24,6 +25,7 @@ export default class World
             this.dateText = new DateText()
             this.nextDayButton = new NextDayButton()
             this.prevDayButton = new PrevDayButton()
+            this.stars = new Stars
             this.environment = new Environment()
 
             // New Date event

@@ -19,6 +19,7 @@ export default class Renderer {
         })
         this.instance.setSize(this.sizes.width, this.sizes.height)
         this.instance.setPixelRatio(this.sizes.pixelRatio)
+        this.instance.shadowMap.enabled = true
     }
 
     resize() {

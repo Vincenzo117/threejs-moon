@@ -45,9 +45,10 @@ export default class Environment
     {
         this.sunLight = new THREE.DirectionalLight('#ffffff', 1.35)
         this.sunLight.castShadow = true
-        this.sunLight.shadow.camera.fat = 15
+        this.sunLight.shadow.camera.far = 15
         this.sunLight.shadow.mapSize.set(1024, 1024)
         this.sunLight.shadow.normalBias = 0.05
+        this.sunLight.position.y = 0
         this.scene.add(this.sunLight)
 
         // Debug
@@ -64,8 +65,8 @@ export default class Environment
 
     setSunLightPosition()
     {
-        this.sunLight.position.x = Math.cos(this.moonData.rotationDegrees) * 100
-        this.sunLight.position.z = Math.sin(this.moonData.rotationDegrees) * 100
+        this.sunLight.position.x = Math.cos(this.moonData.rotationDegrees) * 10
+        this.sunLight.position.z = Math.sin(this.moonData.rotationDegrees) * 10
     }
 
     setEnvironmentMap()
@@ -75,8 +76,8 @@ export default class Environment
 
     updateData()
     {
-        gsap.to(this.sunLight.position,{ duration: 1, x: Math.cos(this.moonData.rotationDegrees) * 100})
-        gsap.to(this.sunLight.position,{ duration: 1, z: Math.sin(this.moonData.rotationDegrees) * 100})
+        gsap.to(this.sunLight.position,{ duration: 1, x: Math.cos(this.moonData.rotationDegrees) * 10})
+        gsap.to(this.sunLight.position,{ duration: 1, z: Math.sin(this.moonData.rotationDegrees) * 10})
     }
 
 }
