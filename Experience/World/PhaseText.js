@@ -75,19 +75,19 @@ export default class PhaseText
     {   
         if(this.sizes.width < 420)
         {
-            this.mesh.scale.set(0.35, 0.35, 0.35)
+            this.mesh.scale.set(0.4, 0.4, 0.4)
         }
-        else if(this.sizes.width < 560)
+        else if(this.sizes.width < 580)
         {
             this.mesh.scale.set(0.45, 0.45, 0.45)
         }
-        else if(this.sizes.width < 720)
+        else if(this.sizes.width < 750)
         {
             this.mesh.scale.set(0.6, 0.6, 0.6)
         }
-        else if(this.sizes.width < 880)
+        else if(this.sizes.width < 990)
         {
-            this.mesh.scale.set(0.8, 0.8, 0.8)
+            this.mesh.scale.set(0.75, 0.75, 0.75)
         } 
         else 
         {

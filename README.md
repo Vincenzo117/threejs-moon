@@ -5,7 +5,6 @@ Add #debug to the url and refresh to get access to the debug ui.
 
 
 ## To-do:
-- Fix responsivness sizes
 - Camera movement with device orientation
 - Loading screen
 - Fix moon displacement map

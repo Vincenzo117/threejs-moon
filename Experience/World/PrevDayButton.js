@@ -115,13 +115,13 @@ export default class PrevDayButton extends EventEmitter
     {   
         if(this.sizes.width < 420)
         {
-            this.mesh.scale.set(0.45, 0.45, 0.45)
-            this.mesh.position.x = - 1
+            this.mesh.scale.set(0.5, 0.5, 0.5)
+            this.mesh.position.x = - 1.3
         }
         else if(this.sizes.width < 560)
         {
             this.mesh.scale.set(0.55, 0.55, 0.55)
-            this.mesh.position.x = - 1.3
+            this.mesh.position.x = - 1.5
         }
         else if(this.sizes.width < 720)
         {

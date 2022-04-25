@@ -73,11 +73,11 @@ export default class Moon
     {   
         if(this.sizes.width < 400)
         {
-            this.mesh.scale.set(0.6, 0.6, 0.6)
+            this.mesh.scale.set(0.8, 0.8, 0.8)
         }
         else if(this.sizes.width < 600)
         {
-            this.mesh.scale.set(0.75, 0.75, 0.75)
+            this.mesh.scale.set(0.85, 0.85, 0.85)
         } 
         else 
         {
