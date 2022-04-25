@@ -45,7 +45,7 @@ export default class Moon
             bumpMap: this.textures.displacement,
         })
         
-        this.material.bumpScale = 0.01
+        this.material.bumpScale = 0.03
 
         // Debug
         if(this.debug.active)
