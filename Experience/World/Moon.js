@@ -26,7 +26,7 @@ export default class Moon
 
     setGeometry()
     {
-        this.geometry = new THREE.SphereGeometry(2, 50, 50  )
+        this.geometry = new THREE.SphereGeometry(2, 500, 500  )
     }
 
     setTextures()
@@ -42,20 +42,20 @@ export default class Moon
     {
         this.material = new THREE.MeshStandardMaterial({ 
             map: this.textures.color,
-            displacementMap: this.textures.displacement
+            bumpMap: this.textures.displacement,
         })
         
-        this.material.displacementScale = 0
+        this.material.bumpScale = 0.01
 
         // Debug
         if(this.debug.active)
         {
             this.debugFolder
-                .add(this.material, 'displacementScale')
+                .add(this.material, 'bumpScale')
                 .min(0)
                 .max(1)
                 .step(0.01)
-                .name('displacement scale')
+                .name('bump scale')
         }
     }
 

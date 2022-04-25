@@ -44,8 +44,8 @@ export default class Camera
         {
             const x = ((event.gamma + 90) / 180) - 0.5
             const y = - (((event.beta + 180) / 360) - 0.5)
-            this.instance.position.x = x * 3
-            this.instance.position.y = y * 6
+            this.instance.position.x = x * 4
+            this.instance.position.y = y * 8
             this.instance.lookAt(new THREE.Vector3(0, 0, 0))
         })
     }
