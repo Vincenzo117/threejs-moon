@@ -75,6 +75,15 @@ export default class Camera
                 this.instance.lookAt(new THREE.Vector3(0, 0, 0))
             })
         }
+
+        window.addEventListener('deviceorientation', (event) =>
+        {
+            const x = ((event.gamma + 90) / 180) - 0.5
+            const y = - (((event.beta + 180) / 360) - 0.5)
+            this.instance.position.x = x * 5
+            this.instance.position.y = y * 10
+            this.instance.lookAt(new THREE.Vector3(0, 0, 0))
+        })
     }
 
     resize()
