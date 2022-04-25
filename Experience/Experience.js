@@ -6,6 +6,7 @@ import Renderer from './Renderer.js'
 import World from './World/World.js'
 import Resources from './Utils/Resources.js'
 import Debug from './Utils/Debug.js'
+import StatsPanel from './Utils/StatsPanel.js'
 import sources from './sources.js'
 
 let instance = null
@@ -26,6 +27,7 @@ export default class Experience
 
         // Setup
         this.debug = new Debug()
+        this.statsPanel = new StatsPanel
         this.sizes = new Sizes()
         this.time = new Time()
         this.scene = new THREE.Scene()
@@ -56,7 +58,9 @@ export default class Experience
 
     update()
     {
+        this.statsPanel.statsBegin()
         this.camera.update()
         this.renderer.update()
+        this.statsPanel.statsEnd()
     }
 }
