@@ -8,6 +8,5 @@ Add #debug to the url and refresh to get access to the debug ui.
 - Fix moon displacement map
 - Optimization:
     ~ add stat display in debug mode
-    ~ textures
     ~ logic
     ~ lights and shadows

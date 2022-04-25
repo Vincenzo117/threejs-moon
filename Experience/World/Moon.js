@@ -26,7 +26,7 @@ export default class Moon
 
     setGeometry()
     {
-        this.geometry = new THREE.SphereGeometry(2, 100, 100)
+        this.geometry = new THREE.SphereGeometry(2, 50, 50  )
     }
 
     setTextures()

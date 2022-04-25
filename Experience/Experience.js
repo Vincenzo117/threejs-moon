@@ -59,7 +59,6 @@ export default class Experience
     update()
     {
         this.statsPanel.statsBegin()
-        this.camera.update()
         this.renderer.update()
         this.statsPanel.statsEnd()
     }

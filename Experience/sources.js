@@ -2,12 +2,12 @@ export default [
     {
         name: 'moonColorTexture',
         type: 'texture',
-        path: '/assets/textures/moon/lroc_color_poles_4k.png'
+        path: '/assets/textures/moon/moon-color.jpg'
     },
     {
         name: 'moonDispTexture',
         type: 'texture',
-        path: '/assets/textures/moon/ldem_16_uint.png'
+        path: '/assets/textures/moon/moon-displacement.jpg'
     },
     {
         name: 'text',
