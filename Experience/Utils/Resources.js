@@ -1,5 +1,7 @@
 import * as THREE from 'three'
+import gsap from 'gsap'
 import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js'
+import Experience from '../Experience.js'
 import EventEmitter from './EventEmitter.js'
 
 export default class Resources extends EventEmitter
@@ -8,23 +10,57 @@ export default class Resources extends EventEmitter
     {
         super()
 
-        // Options
+        this.experience = new Experience()
+        this.camera = this.experience.camera
+        this.scene = this.experience.scene
         this.sources = sources
-
-        // Setup
         this.items = {}
-        this.toLoad = this.sources.length
-        this.loaded = 0
 
+        this.setOverlay()
         this.setLoaders()
         this.startLoading()
     }
 
-    setLoaders()
+    setOverlay()
     {
+        this.overlayGeometry = new THREE.PlaneBufferGeometry(100, 100)
+        this.overlayMaterial = new THREE.MeshBasicMaterial({ color: 0x000000 , transparent: true })
+        this.overlayMesh = new THREE.Mesh(this.overlayGeometry, this.overlayMaterial)
+        this.overlayMesh.position.z = this.camera.instance.position.z - 0.4
+        this.scene.add(this.overlayMesh)
+    }
+
+    setLoaders()
+    {   
+        this.loadingBarElement = document.querySelector('.loading-bar')
+
+        this.loadingManager = new THREE.LoadingManager( 
+            () =>
+            {
+                this.trigger('ready')
+
+                gsap.to(this.overlayMaterial, {duration: 3, opacity: 0, delay: 1})
+
+                gsap.delayedCall(1, () =>
+                {
+                    this.loadingBarElement.classList.add('ended')
+                    this.loadingBarElement.style.transform = ''
+                })
+            },
+            (itemUrl, itemsLoaded, itemsTotal) =>
+            {
+                // On progress
+                this.loadingBarElement.style.transform = `scaleX(${itemsLoaded / itemsTotal})`
+            },
+            (error) =>
+            {
+                console.log(error);
+            }
+        )
+
         this.loaders = {}
-        this.loaders.textureLoader = new THREE.TextureLoader()
-        this.loaders.fontLoader = new FontLoader()
+        this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManager)
+        this.loaders.fontLoader = new FontLoader(this.loadingManager)
     }
 
     startLoading()
@@ -60,12 +96,5 @@ export default class Resources extends EventEmitter
     sourceLoaded(source, file)
     {
         this.items[source.name] = file
-
-        this.loaded++
-
-        if(this.loaded == this.toLoad)
-        {
-            this.trigger('ready')
-        }
     }
 }

@@ -76,6 +76,7 @@ export default class Camera
             })
         }
 
+        // Only working on firefox mobile
         window.addEventListener('deviceorientation', (event) =>
         {
             const x = ((event.gamma + 90) / 180) - 0.5
