@@ -9,14 +9,19 @@ html {
 }
 
 .webgl {
-  display: fixed;
+  position: fixed;
   top: 0;
   left: 0;
   outline: none;
 }
 
-h1 {
-  color: white;
+.fullscreen-button {
   position: fixed;
-  top: 0;
+  top: 20px;
+  left: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  filter: invert(100%);
+  cursor: pointer;
 }

@@ -24,11 +24,8 @@ export default class Sizes extends EventEmitter
         })
 
         // Fullscreen
-        window.addEventListener('keydown', (event) => {
-            if (event.key == 'f') 
-            {
-                this.toggleFullscreen()
-            }
+        document.querySelector('.fullscreen-button').addEventListener('click', (event) => {
+            this.toggleFullscreen()
         })
     }
 
@@ -37,11 +34,11 @@ export default class Sizes extends EventEmitter
         const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
 
         if (!fullscreenElement) {
-            if (this.canvas.requestFullscreen) {
-                this.canvas.requestFullscreen()
+            if (document.body.requestFullscreen) {
+                document.body.requestFullscreen()
             }
-            else if (this.canvas.webkitRequestFullscreen) {
-                this.canvas.webkitRequestFullscreen()
+            else if (document.body.webkitRequestFullscreen) {
+                document.body.webkitRequestFullscreen()
             }
         }
         else {
