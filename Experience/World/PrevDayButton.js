@@ -98,7 +98,7 @@ export default class PrevDayButton extends EventEmitter
         window.addEventListener('touchend', (event) => 
         {
             touchEndX = event.changedTouches[0].screenX
-            if(touchEndX < touchStartX)
+            if(touchEndX > touchStartX)
             {
                 this.prevDay()
             }
