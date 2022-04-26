@@ -5,9 +5,9 @@ export default [
         path: '/assets/textures/moon/moon-color.jpg'
     },
     {
-        name: 'moonDispTexture',
+        name: 'moonBumpTexture',
         type: 'texture',
-        path: '/assets/textures/moon/moon-displacement.jpg'
+        path: '/assets/textures/moon/moon-bump.jpg'
     },
     {
         name: 'text',

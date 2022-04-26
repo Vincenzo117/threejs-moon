@@ -17,6 +17,7 @@ export default class Resources extends EventEmitter
         this.items = {}
 
         this.setOverlay()
+        this.setLoadingManager()
         this.setLoaders()
         this.startLoading()
     }
@@ -30,8 +31,8 @@ export default class Resources extends EventEmitter
         this.scene.add(this.overlayMesh)
     }
 
-    setLoaders()
-    {   
+    setLoadingManager()
+    {
         this.loadingBarElement = document.querySelector('.loading-bar')
 
         this.loadingManager = new THREE.LoadingManager( 
@@ -49,15 +50,17 @@ export default class Resources extends EventEmitter
             },
             (itemUrl, itemsLoaded, itemsTotal) =>
             {
-                // On progress
                 this.loadingBarElement.style.transform = `scaleX(${itemsLoaded / itemsTotal})`
             },
             (error) =>
             {
-                console.log(error);
+                console.log(error)
             }
         )
+    }
 
+    setLoaders()
+    {   
         this.loaders = {}
         this.loaders.textureLoader = new THREE.TextureLoader(this.loadingManager)
         this.loaders.fontLoader = new FontLoader(this.loadingManager)
@@ -65,10 +68,8 @@ export default class Resources extends EventEmitter
 
     startLoading()
     {
-        // Load each source
         for(const source of this.sources)
         {
-            // Test type
             if(source.type === 'texture')
             {
                 this.loaders.textureLoader.load(
@@ -79,7 +80,6 @@ export default class Resources extends EventEmitter
                     }
                 )
             }
-
             if(source.type === 'font')
             {
                 this.loaders.fontLoader.load(

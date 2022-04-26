@@ -1,5 +1,4 @@
 import * as THREE from 'three'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import Experience from './Experience.js'
 
 export default class Camera 
@@ -22,7 +21,7 @@ export default class Camera
             45, 
             this.sizes.width / this.sizes.height,
             0.1, 
-            1000
+            100
         ) 
         this.instance.position.z = 10
         this.scene.add(this.instance)

@@ -15,7 +15,8 @@ export default class Sizes extends EventEmitter
         this.canvas = this.experience.canvas
 
         // Resize event
-        window.addEventListener('resize', () => {
+        window.addEventListener('resize', () => 
+        {
             this.width = window.innerWidth
             this.height = window.innerHeight
             this.pixelRatio = Math.min(window.devicePixelRatio, 2)
@@ -24,7 +25,8 @@ export default class Sizes extends EventEmitter
         })
 
         // Fullscreen
-        document.querySelector('.fullscreen-button').addEventListener('click', (event) => {
+        document.querySelector('.fullscreen-button').addEventListener('click', (event) => 
+        {
             this.toggleFullscreen()
         })
     }
@@ -33,19 +35,25 @@ export default class Sizes extends EventEmitter
     {
         const fullscreenElement = document.fullscreenElement || document.webkitFullscreenElement
 
-        if (!fullscreenElement) {
-            if (document.body.requestFullscreen) {
+        if (!fullscreenElement) 
+        {
+            if (document.body.requestFullscreen) 
+            {
                 document.body.requestFullscreen()
             }
-            else if (document.body.webkitRequestFullscreen) {
+            else if (document.body.webkitRequestFullscreen) 
+            {
                 document.body.webkitRequestFullscreen()
             }
         }
-        else {
-            if (document.exitFullscreen) {
+        else 
+        {
+            if (document.exitFullscreen) 
+            {
                 document.exitFullscreen()
             }
-            else if (document.webkitExitFullscreen) {
+            else if (document.webkitExitFullscreen) 
+            {
                 document.webkitExitFullscreen()
             }
         }

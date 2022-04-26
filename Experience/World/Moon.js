@@ -26,7 +26,7 @@ export default class Moon
 
     setGeometry()
     {
-        this.geometry = new THREE.SphereGeometry(2, 500, 500  )
+        this.geometry = new THREE.SphereGeometry(2, 250, 250)
     }
 
     setTextures()
@@ -35,17 +35,17 @@ export default class Moon
 
         this.textures.color = this.resources.items.moonColorTexture
 
-        this.textures.displacement = this.resources.items.moonDispTexture
+        this.textures.bump = this.resources.items.moonBumpTexture
     }
     
     setMaterial()
     {
         this.material = new THREE.MeshStandardMaterial({ 
             map: this.textures.color,
-            bumpMap: this.textures.displacement,
+            bumpMap: this.textures.bump,
         })
         
-        this.material.bumpScale = 0.03
+        this.material.bumpScale = 0.04
 
         // Debug
         if(this.debug.active)
@@ -62,10 +62,7 @@ export default class Moon
     setMesh()
     {
         this.mesh = new THREE.Mesh(this.geometry, this.material)
-        this.mesh.position.y = 0
         this.mesh.rotation.y = 4.5
-        this.mesh.castShadow = true
-        this.mesh.receiveShadow = true
         this.scene.add(this.mesh)
     }
 

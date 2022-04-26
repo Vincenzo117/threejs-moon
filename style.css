@@ -12,15 +12,6 @@ body {
   background-color: black;
 }
 
-.fullscreen-button {
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  width: 20px;
-  height: 20px;
-  z-index: 10;
-  cursor: pointer;
-}
 
 .webgl {
   position: fixed;
@@ -43,4 +34,24 @@ body {
 .loading-bar.ended { 
   transform-origin: top right;
   transition: transform 1.5s ease-in-out;
+}
+
+.fullscreen-button {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 20px;
+  height: 20px;
+  z-index: 10;
+  cursor: pointer;
+}
+
+.github-icon {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 25px;
+  height: 25px;
+  z-index: 10;
+  cursor: pointer;
 }

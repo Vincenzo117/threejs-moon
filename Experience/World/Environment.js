@@ -21,7 +21,6 @@ export default class Environment
         this.setAmbientLight()
         this.setSunLight()
         this.setSunLightPosition()
-        this.setEnvironmentMap()
     }
 
     setAmbientLight()
@@ -44,11 +43,6 @@ export default class Environment
     setSunLight()
     {
         this.sunLight = new THREE.DirectionalLight('#ffffff', 1.35)
-        this.sunLight.castShadow = true
-        this.sunLight.shadow.radius = 40
-        this.sunLight.shadow.camera.far = 15
-        this.sunLight.shadow.mapSize.set(1024, 1024)
-        this.sunLight.shadow.normalBias = 0.05
         this.sunLight.position.y = 0
         this.scene.add(this.sunLight)
 
@@ -68,11 +62,6 @@ export default class Environment
     {
         this.sunLight.position.x = Math.cos(this.moonData.rotationDegrees) * 10
         this.sunLight.position.z = Math.sin(this.moonData.rotationDegrees) * 10
-    }
-
-    setEnvironmentMap()
-    {
-        // EnvironmentMap setup
     }
 
     updateData()
