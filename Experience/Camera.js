@@ -29,23 +29,25 @@ export default class Camera
 
     setListener()
     {
+        this.cursorX = 0
+
         if(this.sizes.width > 500)
         {
             window.addEventListener('mousemove', (event) =>
             {
-                const x = event.clientX / this.sizes.width - 0.5
-                this.instance.position.x = x 
-                this.instance.lookAt(new THREE.Vector3(0, 0, 0))
+                this.cursorX = event.clientX / this.sizes.width - 0.5
             })
+        }
+
+        this.orientation = {
+            x: 0,
+            y: 0
         }
 
         window.addEventListener('deviceorientation', (event) =>
         {
-            const x = ((event.gamma + 90) / 180) - 0.5
-            const y = - (((event.beta + 180) / 360) - 0.5)
-            this.instance.position.x = x * 4
-            this.instance.position.y = y * 8
-            this.instance.lookAt(new THREE.Vector3(0, 0, 0))
+            this.orientation.x = ((event.gamma + 90) / 180) - 0.5
+            this.orientation.y = - (((event.beta + 180) / 360) - 0.5)
         })
     }
 
@@ -53,5 +55,15 @@ export default class Camera
     {
         this.instance.aspect = this.sizes.width / this.sizes.height
         this.instance.updateProjectionMatrix()
+    }
+
+    update() {
+        if(this.cursorX) {
+            this.instance.position.x += (this.cursorX - this.instance.position.x) * 0.1
+        } else if(this.orientation.x || this.orientation.y) {
+            this.instance.position.x += (this.orientation.x - this.instance.position.x) * 0.5
+            this.instance.position.y += (this.orientation.y - this.instance.position.y) 
+        }
+        this.instance.lookAt(new THREE.Vector3(0, 0, 0))
     }
 } 

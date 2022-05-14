@@ -61,6 +61,7 @@ export default class Experience
         if(this.stats.active)
             this.  stats.instance.begin()
 
+        this.camera.update()
         this.renderer.update()
 
         if(this.stats.active)
