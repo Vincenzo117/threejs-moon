@@ -30,7 +30,7 @@ body {
   transition: transform 1s;
 }
 
-.loading-bar.ended { 
+.loading-bar.ended {
   transform-origin: top right;
   transition: transform 1.5s ease-in-out;
 }

@@ -9,6 +9,7 @@
     "deploy": "vercel --prod"
   },
   "devDependencies": {
+    "prettier": "2.6.2",
     "vite": "^2.9.0"
   },
   "dependencies": {
@@ -18,5 +19,9 @@
     "stats.js": "^0.17.0",
     "three": "^0.139.2",
     "vercel": "^24.1.0"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
   }
 }
